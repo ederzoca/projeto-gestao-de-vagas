@@ -1,4 +1,4 @@
-package br.com.ederjr.gestao_de_vagas.modules.services;
+package br.com.ederjr.gestao_de_vagas.modules.candidate.services;
 
 import br.com.ederjr.gestao_de_vagas.exceptions.UserFoundException;
 import br.com.ederjr.gestao_de_vagas.modules.candidate.entities.CandidateEntity;

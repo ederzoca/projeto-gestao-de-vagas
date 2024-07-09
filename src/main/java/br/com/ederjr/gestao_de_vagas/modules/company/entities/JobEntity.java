@@ -18,7 +18,7 @@ public class JobEntity {
     private String level;
 
     @ManyToOne
-    @JoinColumn(name = "company_id") // Indica a chave estrangeira que deve ser recebida
+    @JoinColumn(name = "company_id", insertable = false, updatable = false) // Indica a chave estrangeira que deve ser recebida, e vai ser usado somente o company_id para manipulação de dados
     private CompanyEntity companyEntity;
 
     @Column(name = "company_id")

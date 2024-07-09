@@ -1,6 +1,6 @@
 package br.com.ederjr.gestao_de_vagas.modules.candidate.controllers;
 
-import br.com.ederjr.gestao_de_vagas.modules.services.CandidateService;
+import br.com.ederjr.gestao_de_vagas.modules.candidate.services.CandidateService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
