@@ -1,6 +1,7 @@
 package br.com.ederjr.gestao_de_vagas.modules.company.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -15,13 +16,15 @@ public class JobEntity {
     private UUID id;
     private String description;
     private String benefits;
+
+    @NotBlank(message = "Nível não pode ficar em branco.")
     private String level;
 
     @ManyToOne
     @JoinColumn(name = "company_id", insertable = false, updatable = false) // Indica a chave estrangeira que deve ser recebida, e vai ser usado somente o company_id para manipulação de dados
     private CompanyEntity companyEntity;
 
-    @Column(name = "company_id")
+    @Column(name = "company_id", nullable = false)
     private UUID idCompany;
 
     @CreationTimestamp
