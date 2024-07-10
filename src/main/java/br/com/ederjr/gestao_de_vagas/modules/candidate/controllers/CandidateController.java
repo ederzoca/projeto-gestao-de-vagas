@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/candidate")
@@ -32,8 +33,18 @@ public class CandidateController {
     @GetMapping("/list")
     public ResponseEntity<Object> listCandidates() {
         try {
-          List<CandidateEntity> result = this.candidateService.listCandidates();
+          var result = this.candidateService.listCandidates();
           return ResponseEntity.ok().body(result);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/list/{username}")
+    public ResponseEntity<Object> searchCandidate(@PathVariable String username) {
+        try {
+            var result = this.candidateService.searchCandidate(username);
+            return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

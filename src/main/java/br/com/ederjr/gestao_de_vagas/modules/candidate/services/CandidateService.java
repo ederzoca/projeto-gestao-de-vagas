@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CandidateService {
@@ -16,7 +17,7 @@ public class CandidateService {
     private CandidateRepository candidateRepository;
 
     public CandidateEntity createCandidate(CandidateEntity candidateEntity) {
-        this.candidateRepository.findByUsernameOrEmail(candidateEntity.getUsername(), candidateEntity.getEmail())
+        this.candidateRepository.findByUsername(candidateEntity.getUsername())
                 .ifPresent((user) -> {
                     throw new UserFoundException();
                 });
@@ -30,5 +31,13 @@ public class CandidateService {
             throw new NoUsersException();
         }
         return candidates;
+    }
+
+    public CandidateEntity searchCandidate(String username) {
+        var candidate = this.candidateRepository.findByUsername(username);
+        if (candidate.isEmpty()) {
+            throw new NoUsersException();
+        }
+        return candidate.get();
     }
 }

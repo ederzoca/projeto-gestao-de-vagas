@@ -7,6 +7,6 @@ import br.com.ederjr.gestao_de_vagas.modules.candidate.entities.CandidateEntity;
 import org.springframework.data.jpa.repository.JpaRepository;;
 
 public interface CandidateRepository extends JpaRepository<CandidateEntity, UUID> {
-    Optional<CandidateEntity> findByUsernameOrEmail(String username, String email); // Se ele não encontrar nada, vão ser retornadas algumas opções
+    Optional<CandidateEntity> findByUsername(String username); // Se ele não encontrar nada, vão ser retornadas algumas opções
     
 }
