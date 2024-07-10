@@ -59,4 +59,14 @@ public class CandidateController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @DeleteMapping("/delete/{username}")
+    public ResponseEntity<Object> deleteCandidate(@PathVariable String username) {
+        try {
+            this.candidateService.deleteCandidate(username);
+            return ResponseEntity.ok().body("Usuário deletado");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }

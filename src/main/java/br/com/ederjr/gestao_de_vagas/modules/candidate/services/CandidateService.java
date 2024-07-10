@@ -26,7 +26,7 @@ public class CandidateService {
     }
 
     public List<CandidateEntity> listCandidates() {
-        List<CandidateEntity> candidates = candidateRepository.findAll();
+        var candidates = candidateRepository.findAll();
         if (candidates.isEmpty()) {
             throw new NoUsersException();
         }
@@ -51,5 +51,11 @@ public class CandidateService {
         candidate.setPassword(candidateEntity.getPassword());
 
         return this.candidateRepository.save(candidate);
+    }
+
+    public void deleteCandidate(String username) {
+        var candidate = candidateRepository.findByUsername(username)
+                .orElseThrow(NoUsersException::new);
+        candidateRepository.delete(candidate);
     }
 }
