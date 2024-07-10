@@ -16,8 +16,8 @@ public class JobController {
     @Autowired
     private JobService jobService;
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public JobEntity create(@Valid @RequestBody JobEntity jobEntity) {
-        return this.jobService.execute(jobEntity);
+        return this.jobService.createJob(jobEntity);
     }
 }

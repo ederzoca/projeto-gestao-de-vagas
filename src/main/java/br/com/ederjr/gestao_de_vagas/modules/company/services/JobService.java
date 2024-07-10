@@ -11,7 +11,7 @@ public class JobService {
     @Autowired
     private JobRepository jobRepository;
 
-    public JobEntity execute(JobEntity jobEntity)  {
+    public JobEntity createJob(JobEntity jobEntity)  {
         return this.jobRepository.save(jobEntity);
     }
 }

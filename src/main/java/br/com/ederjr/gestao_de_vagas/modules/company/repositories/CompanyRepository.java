@@ -8,6 +8,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CompanyRepository extends JpaRepository<CompanyEntity, UUID> {
-    Optional<CompanyEntity> findByUsernameOrEmail(String username, String email); // Se ele não encontrar nada, vão ser retornadas algumas opções
+    Optional<CompanyEntity> findByUsername(String username); // Se ele não encontrar nada, vão ser retornadas algumas opções
 
 }
