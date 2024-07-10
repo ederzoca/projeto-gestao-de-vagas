@@ -49,4 +49,14 @@ public class CandidateController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @PutMapping("/update/{username}")
+    public ResponseEntity<Object> updateCandidate(@PathVariable String username, @Valid @RequestBody CandidateEntity candidateEntity) {
+        try {
+            var result = this.candidateService.updateCandidate(username, candidateEntity);
+            return ResponseEntity.ok().body(result);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }

@@ -40,4 +40,16 @@ public class CandidateService {
         }
         return candidate.get();
     }
+
+    public CandidateEntity updateCandidate(String username, CandidateEntity candidateEntity) {
+        var candidate = this.candidateRepository.findByUsername(username)
+                .orElseThrow(NoUsersException::new);
+        candidate.setName(candidateEntity.getName());
+        candidate.setUsername(candidateEntity.getUsername());
+        candidate.setEmail(candidateEntity.getEmail());
+        candidate.setDescription(candidateEntity.getDescription());
+        candidate.setPassword(candidateEntity.getPassword());
+
+        return this.candidateRepository.save(candidate);
+    }
 }
