@@ -25,8 +25,8 @@ public class CompanyService {
                     throw new UserFoundException();
                 });
 
-        var password = passwordEncoder.encode(companyEntity.getPassword());
-        companyEntity.setPassword(password);                                          // Encriptografando a senha
+        var password = passwordEncoder.encode(companyEntity.getPassword());         // Encriptografando a senha
+        companyEntity.setPassword(password);
 
         return this.companyRepository.save(companyEntity);
     }
