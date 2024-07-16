@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor                             // Cria um construtor com os argumentos
+@AllArgsConstructor
 public class AuthCompanyDTO {
 
     private String password;
